@@ -102,12 +102,12 @@ The motivation comes from three critical issues:
 
 | Aspect | Single U-Net (Baseline) | Multi-level U-Net (Our Design) | Benefit |
 |--------|--------------------------|--------------------------------|---------|
-| **Small Tumors** | Vanish due to class imbalance (<2% voxels) | ROI cropping + focal loss enhance tumor-to-background ratio | ✅ Better small tumor detection |
-| **Boundary Accuracy** | Blurs across liver lobes, hard to localize | Segments **by anatomical regions**, preserving fine boundaries | ✅ More precise tumor boundaries |
-| **Clinical Interpretability** | Only says “tumor present” | Reports **tumor size + segment location (e.g., IVa, 2.3 cm)** | ✅ Directly usable in diagnosis |
-| **False Positives** | Wasted capacity on irrelevant organs → more FP | Ignores kidneys/stomach/etc., focuses on **liver-only ROI** | ✅ Fewer false positives |
-| **Supervision Signal** | Binary tumor mask only | Multi-task: **segments + tumors** → richer gradients | ✅ Stronger learning signal |
-| **Efficiency & Workflow** | Radiologists must manually verify every CT slice | Structured reports summarize count, size, region → quick review | ✅ Saves time, reduces fatigue/misdiagnosis |
+| **Small Tumors** | Vanish due to class imbalance (<2% voxels) | ROI cropping + focal loss enhance tumor-to-background ratio | Better small tumor detection |
+| **Boundary Accuracy** | Blurs across liver lobes, hard to localize | Segments **by anatomical regions**, preserving fine boundaries | More precise tumor boundaries |
+| **Clinical Interpretability** | Only says “tumor present” | Reports **tumor size + segment location (e.g., IVa, 2.3 cm)** | Directly usable in diagnosis |
+| **False Positives** | Wasted capacity on irrelevant organs → more FP | Ignores kidneys/stomach/etc., focuses on **liver-only ROI** | Fewer false positives |
+| **Supervision Signal** | Binary tumor mask only | Multi-task: **segments + tumors** → richer gradients | Stronger learning signal |
+| **Efficiency & Workflow** | Radiologists must manually verify every CT slice | Structured reports summarize count, size, region → quick review | Saves time, reduces fatigue/misdiagnosis |
 
 ---
 
