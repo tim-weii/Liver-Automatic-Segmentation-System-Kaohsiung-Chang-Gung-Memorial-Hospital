@@ -26,6 +26,9 @@ Without skip connections, small details such as **tumors** would often be lost d
 </p>
 <p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
+*Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class
+)
+
 ---
 
 ### 🔹 Why U-Net Works for Medical Imaging
