@@ -26,8 +26,7 @@ Without skip connections, small details such as **tumors** would often be lost d
 </p>
 <p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
-*Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class
-)
+
 
 ---
 
@@ -77,7 +76,7 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 <img width="960" height="970" alt="image" src="https://github.com/user-attachments/assets/cece861e-67f6-465f-9160-55197b242695" />
 </p>
 <p align="center"><b>Fig.3.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
-
+*Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class)
 ---
 
 ##  Our System Design
