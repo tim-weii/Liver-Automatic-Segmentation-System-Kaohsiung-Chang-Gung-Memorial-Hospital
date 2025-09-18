@@ -1,6 +1,9 @@
 
 #  Liver Automatic Segmentation System
 
+<img width="1125" height="653" alt="image" src="https://github.com/user-attachments/assets/3d64b550-bb67-4ac9-a63f-165d570b4dc6" />
+<p align="center">Fig.1. This is the system’s visualization interface, showing liver 8-segment and tumor prediction results.</p>
+
 **Institution:** Kaohsiung Chang Gung Memorial Hospital (2024/05) — 🥇 *Best Project Award (1st place)*  
 **Team:** 4 persons · **My Contribution:** 50%
 
@@ -24,7 +27,7 @@ Without skip connections, small details such as **tumors** would often be lost d
 <p align="center">
   <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="600"/>
 </p>
-<p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
+<p align="center">Fig.2. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
 
 
@@ -40,7 +43,7 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/7d3a59ea-d257-4aa6-a352-fb5b725c5e0b" />
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/1e84cb0b-bb32-44df-9827-87fa76283276" />
 </p>
-<p align="center">Fig.2. Example: Original CT slice, ground-truth mask, U-Net segmentation result</p>  
+<p align="center">Fig.3. Example: Original CT slice, ground-truth mask, U-Net segmentation result</p>  
 
 *Source:* [Day 20：使用 U-Net 作影像分割](https://ithelp.ithome.com.tw/articles/10240314)
 
