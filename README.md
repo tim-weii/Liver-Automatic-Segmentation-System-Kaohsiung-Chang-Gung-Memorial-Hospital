@@ -41,7 +41,7 @@ While a single U-Net works reasonably well for **organ-level segmentation**, it 
 - The **liver itself is anatomically divided into multiple lobes/segments**, making boundary delineation even harder.  
 
 <p align="center"><img width="500" height="282" alt="image" src="https://github.com/user-attachments/assets/c6bb8864-7039-4281-9347-30b1cad3479f" />
-*Source:* [Wikipedia](https://zh.wikipedia.org/zh-tw/%E8%82%9D%E8%87%9F)
+<p>*Source:* [Wikipedia](https://zh.wikipedia.org/zh-tw/%E8%82%9D%E8%87%9F)</p>
 </p>
 - A single-pass U-Net tends to miss fine structures or merge them into larger regions.  
 
