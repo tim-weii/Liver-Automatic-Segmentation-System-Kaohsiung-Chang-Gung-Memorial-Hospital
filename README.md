@@ -22,7 +22,7 @@ It gets its name from its **U-shaped architecture**, consisting of:
 Without skip connections, small details such as **tumors** would often be lost during feature compression.
 
 <p align="center">
-  <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="600" />
+  <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="279" height="300" />
 </p>
 <p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
