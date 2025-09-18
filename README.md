@@ -1,6 +1,8 @@
  
 #  Liver Automatic Segmentation System
 
+https://www.youtube.com/watch?v=Qgj9bozHACM
+
 <img width="971" height="500" alt="image" src="https://github.com/user-attachments/assets/100b4fc8-d09f-463a-a0ec-462107e9d972" />
 <p align="center">Fig.1. This is the system’s visualization interface, showing liver 8-segment and tumor prediction results.</p>
 
