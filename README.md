@@ -22,7 +22,7 @@ It gets its name from its **U-shaped architecture**, consisting of:
 Without skip connections, small details such as **tumors** would often be lost during feature compression.
 
 <p align="center">
-  <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="100" height="150" />
+  <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="600"/>
 </p>
 <p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
@@ -73,7 +73,7 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 ---
 
 <p align="center">
-<img width="960" height="970" alt="image" src="https://github.com/user-attachments/assets/cece861e-67f6-465f-9160-55197b242695" />
+<img width="400" height="450" alt="image" src="https://github.com/user-attachments/assets/cece861e-67f6-465f-9160-55197b242695" />
 </p>
 <p align="center"><b>Fig.3.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
 *Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class)
