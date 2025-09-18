@@ -76,7 +76,7 @@ Together, these form a **Multi-level U-Net pipeline**, where **Stage 1 guides St
 │  ├─ infer/                # multi-level inference pipeline
 │  ├─ postprocess/          # cc3d, morphology, lesion statistics
 │  ├─ report/               # json_builder.py, pdf_export.py
-│  └─ webui/                # PHP web interface for report review/export
+│  └─ webui/                # React JS web interface for report review/export
 ├─ configs/
 │  ├─ liver.yaml            # configs for Stage 1 (liver)
 │  └─ tumor.yaml            # configs for Stage 2 (tumor)
