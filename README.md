@@ -1,6 +1,6 @@
-## 🧬 Understanding U-Net and Multi-level U-Net
+##  Understanding U-Net and Multi-level U-Net
 
-### 🔹 What is U-Net?
+###  What is U-Net?
 
 U-Net is a **variant of Autoencoder** designed for **image segmentation** tasks.  
 It gets its name from its **U-shaped architecture**, consisting of:
@@ -19,7 +19,7 @@ It gets its name from its **U-shaped architecture**, consisting of:
 
 ---
 
-### 🔹 Why U-Net Works for Medical Imaging
+###  Why U-Net Works for Medical Imaging
 
 Medical image segmentation requires **pixel-level precision**, often detecting **tiny abnormal regions** (e.g., tumors).  
 Skip connections allow U-Net to combine **low-level spatial details** (edges, textures) with **high-level semantic context**, making it highly effective for biomedical tasks.
@@ -52,12 +52,36 @@ This two-stage pipeline significantly improves **tumor sensitivity and boundary 
 
 ---
 
-### 🔹 Why Multi-level U-Net?
+##  Why Multi-level U-Net?
 
-- **Single U-Net Limitation:** Misses small or low-contrast tumors.  
-- **Multi-level Advantage:** By cropping to liver ROI, the second model focuses only on meaningful regions → **higher Dice score on tumors (+5~10%)**.  
-- **Clinical Impact:** Structured reports with tumor **count, size, and location** → radiologists save **~60% review time**.
+Unlike a single U-Net that segments all structures in **one pass**, the **Multi-level U-Net** pipeline performs segmentation in **two stages**:
 
+1. **Stage 1 — Organ-level segmentation** (e.g., liver, surrounding tissues).  
+2. **Stage 2 — Fine segmentation inside the organ ROI** (e.g., tumor regions inside the liver).  
+
+This decomposition significantly improves accuracy for **small, low-contrast, or overlapping regions** that a single U-Net would often miss.
+
+<p align="center">
+  <img src="./assets/multi_level_unet.png" width="650" />
+</p>
+<p align="center">Fig.4. Multi-level U-Net segmentation results across multiple organs and regions.</p>
+
+---
+
+###  Challenges
+- Requires **two models** (liver U-Net + tumor U-Net) to run sequentially.  
+- Training is more complex — error propagation from Stage 1 affects Stage 2.  
+- More **compute time & memory** compared to single U-Net.  
+
+---
+
+###  Advantages
+- **Higher accuracy:** Captures fine tumor boundaries (Dice ↑ by ~5–10%).  
+- **Better separation:** Multi-organ context improves region isolation.  
+- **Clinical utility:** Structured outputs (size, count, stage hints) align better with diagnostic workflows.  
+- **Robustness:** Handles small lesions that are usually ignored by single U-Net.  
+
+In practice: Though harder to train and slower to run, the **Multi-level U-Net** achieves significantly **better precision and clinical relevance**.
 
 ##  Workflow (Step-by-Step)
 
