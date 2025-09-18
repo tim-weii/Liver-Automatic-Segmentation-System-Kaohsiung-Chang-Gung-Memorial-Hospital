@@ -43,39 +43,37 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
 *Source:* [Day 20：使用 U-Net 作影像分割](https://ithelp.ithome.com.tw/articles/10240314)
 
 ---
-
 ##  Why Multi-level U-Net?
 
-Traditional U-Net has shown strong performance in medical image segmentation, but when applied directly to **liver CT scans with tumors**, it encounters several fundamental challenges.  
-To overcome these, we designed a **Multi-level U-Net**, where Stage 1 isolates the liver region and Stage 2 performs **segment-level + tumor segmentation** inside that ROI.  
-
-The motivation comes from three critical issues:
+Traditional U-Net has shown strong performance in medical image segmentation,  
+but when applied directly to **liver CT scans with tumors**, it encounters several fundamental challenges.  
+To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolates the liver region and **Stage 2** performs **segment-level + tumor segmentation** inside that ROI.  
 
 ---
+
+### 🔹 Key Challenges & Motivations
 
 1. **Severe Class Imbalance**  
-   - Tumors typically occupy **<2% of total voxels**, while the liver and background dominate.  
-   - A single U-Net tends to optimize for the **global Dice score**, prioritizing large regions and causing **tiny tumors to vanish during downsampling**.  
-   - We explicitly handle this imbalance (ROI cropping + loss design such as **Focal/Dice Loss**) to preserve small lesions.  
+   - Tumors occupy **<2% of voxels**, while liver/background dominate.  
+   - Single U-Net optimizes for global Dice → small tumors vanish during downsampling.  
+   - Solution: ROI cropping + Focal/Dice Loss to amplify tumor signal.  
 
----
-
-2. **Anatomical Complexity of the Liver**  
-   - The liver is divided into **8 Couinaud segments**, each with distinct vascular structures and clinical significance.  
-   - A single-pass segmentation often **blurs inter-segment boundaries**, making it difficult to localize tumors relative to anatomy.  
-   - Clinically, a mask that only says *“tumor detected”* is insufficient. Radiologists need structured outputs like:  
-     *“tumor in Segment IVa, diameter 2.3 cm.”*  
-   - Multi-level segmentation enforces **segment-aware tumor mapping**, bridging model outputs with real clinical reporting.  
-
----
+2. **Anatomical Complexity**  
+   - The liver is divided into **8 Couinaud segments**, each clinically meaningful.  
+   - Single U-Net blurs boundaries → poor tumor localization.  
+   - Solution: Multi-level U-Net outputs **segment-aware tumor mapping**, enabling structured reporting.  
 
 3. **Context Dilution & Efficiency**  
-   - Feeding the **entire abdomen** into one network wastes capacity on irrelevant organs (kidneys, stomach, vessels).  
-   - This leads to **higher false positives**, slower convergence, and reduced sensitivity to subtle patterns like vessels or small lesions.  
-   - By cropping to the liver ROI first, the Multi-level U-Net:  
-     - Allocates computation **only to the liver and tumors**.  
-     - Improves accuracy on **fine-grained variations** (boundaries, vascular adjacency).  
-     - Increases training efficiency and reduces unnecessary noise.  
+   - Entire abdomen input wastes capacity on irrelevant organs (kidneys, stomach, vessels).  
+   - Leads to false positives + slower convergence.  
+   - Solution: Stage 1 liver ROI → Stage 2 fine segmentation on liver only.  
+
+---
+
+<p align="center">
+  <img src="./assets/multi_level_unet_demo.png" width="700" />
+</p>
+<p align="center"><b>Fig.3.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
 
 ---
 
