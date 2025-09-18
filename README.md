@@ -1,7 +1,7 @@
 
 #  Liver Automatic Segmentation System
 
-<img width="1125" height="653" alt="image" src="https://github.com/user-attachments/assets/3d64b550-bb67-4ac9-a63f-165d570b4dc6" />
+<img width="971" height="500" alt="image" src="https://github.com/user-attachments/assets/100b4fc8-d09f-463a-a0ec-462107e9d972" />
 <p align="center">Fig.1. This is the system’s visualization interface, showing liver 8-segment and tumor prediction results.</p>
 
 **Institution:** Kaohsiung Chang Gung Memorial Hospital (2024/05) — 🥇 *Best Project Award (1st place)*  
