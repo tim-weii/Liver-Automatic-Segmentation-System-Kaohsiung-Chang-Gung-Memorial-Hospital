@@ -116,7 +116,7 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 
 
-## 🔄 Workflow (Step-by-Step)
+##  Workflow (Step-by-Step)
 
 1. **Preprocessing**  
    - Load CT volumes (DICOM/NIfTI).  
@@ -146,20 +146,7 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 ---
 
-## 🧠 Model Design
-
-- **Architecture:** Multi-level U-Net  
-  - Stage 1: whole-liver segmentation  
-  - Stage 2: tumor segmentation inside liver ROI  
-- **Loss Functions:** Dice Loss + Focal Loss (handles imbalance).  
-- **Input Strategy:** 2.5D slice stacking or 3D patches.  
-- **Optimization:** Adam + learning rate decay, AMP mixed precision.  
-- **Augmentation:** rotation, flip, intensity jitter, elastic deformation.  
-- **Advantage:** Reduces false positives outside liver; improves tumor boundary precision.  
-
----
-
-## 📊 Dataset & Metrics
+##  Dataset & Metrics
 
 - **Dataset:** De-identified CT scans from **Kaohsiung Chang Gung Memorial Hospital**, IRB-approved.  
 - **Splits:** Train 70% · Validation 10% · Test 20%  
@@ -173,7 +160,7 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 ---
 
-## ⚖️ Challenges
+##  Challenges
 
 - **Imbalance:** Tumors occupy **<2% of voxels**; naïve models ignore them.  
 - **3D vs 2.5D:** 3D context improves results but is memory-intensive; we use hybrid 2.5D.  
@@ -182,7 +169,7 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 ---
 
-## 📈 Clinical Impact
+##  Clinical Impact
 
 - Radiologists review **AI-assisted structured reports** instead of manual slice-by-slice labeling.  
 - **~60% time saved per case** in clinical workflow.  
@@ -190,7 +177,7 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 ---
 
-## 🔮 Future Work
+##  Future Work
 
 - **Advanced models:** Attention U-Net, TransUNet, Swin-UNet.  
 - **Semi-supervised learning:** leverage unlabeled CTs.  
@@ -198,22 +185,3 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 - **Deployment:** export structured results as **DICOM-SR** for direct PACS integration.  
 
 ---
-
-## 📂 Repository Layout
-
-```text
-.
-├─ src/
-│  ├─ preprocess/           # CT preprocessing
-│  ├─ models/               # unet_liver.py, unet_tumor.py
-│  ├─ train/                # dataloaders, losses, trainers
-│  ├─ infer/                # multi-level inference pipeline
-│  ├─ postprocess/          # cc3d, morphology, lesion statistics
-│  ├─ report/               # json_builder.py, pdf_export.py
-│  └─ webui/                # PHP web interface for review/export
-├─ configs/
-│  ├─ liver.yaml            # configs for Stage 1 (liver)
-│  └─ tumor.yaml            # configs for Stage 2 (tumor)
-├─ data/                    # (gitignored) sample CT scans
-└─ README.md
-```
