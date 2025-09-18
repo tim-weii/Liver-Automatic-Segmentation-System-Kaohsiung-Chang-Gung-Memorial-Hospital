@@ -15,6 +15,7 @@ It gets its name from its **U-shaped architecture**, consisting of:
   <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="600" />
 </p>
 <p align="center">Fig.1. U-Net architecture (source: Deep Learning for Image Segmentation: U-Net)</p>
+*Source:* [Deep Learning for Image Segmentation: U-Net Architecture](https://fritz.ai/deep-learning-for-image-segmentation-u-net-architecture/)
 
 ---
 
@@ -29,6 +30,7 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
   <img src="https://ithelp.ithome.com.tw/upload/images/20200920/20001976oTl8JrUc8N.png" width="250" />
 </p>
 <p align="center">Fig.2. Example: Original CT slice, ground-truth mask, U-Net segmentation result</p>
+*Source:* [Day 20：使用 U-Net 作影像分割(Image Segmentation)](https://ithelp.ithome.com.tw/articles/10240314)
 
 ---
 
