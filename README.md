@@ -149,6 +149,29 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 ---
 
+### Liver
+
+| Fold | Samples | Accuracy   |
+|------|---------|------------|
+| 1    | 398     | 0.8490     |
+| 2    | 427     | 0.8750     |
+| 3    | 402     | 0.8498     |
+| 4    | 478     | 0.9066     |
+| 5    | 459     | 0.9145     |
+
+---
+
+### Segmentation
+
+| Fold | Samples | Accuracy   |
+|------|---------|------------|
+| 1    | 398     | 0.8004     |
+| 2    | 427     | 0.8161     |
+| 3    | 402     | 0.8530     |
+| 4    | 478     | 0.7876     |
+| 5    | 459     | 0.8086     |
+
+
 ##  Dataset & Metrics
 
 - **Dataset:** De-identified CT scans from **Kaohsiung Chang Gung Memorial Hospital**, IRB-approved.  
@@ -157,8 +180,8 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 
 | Task         | Model            | Metric | Result |
 |--------------|-----------------|--------|--------|
-| Liver Mask   | U-Net (Stage 1) | Dice   | **0.88–0.91** |
-| Tumor Mask   | U-Net (Stage 2) | Dice   | **0.81–0.84** |
+| Liver Mask   | U-Net (Stage 1) | Dice   | **0.84–0.91** |
+| Tumor Mask   | U-Net (Stage 2) | Dice   | **0.78–0.85** |
 | Report Gen.  | Multi-level Flow | Time saved | **-60% / case** |
 
 ---
