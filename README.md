@@ -1,4 +1,4 @@
-
+ 
 #  Liver Automatic Segmentation System
 
 <img width="971" height="500" alt="image" src="https://github.com/user-attachments/assets/100b4fc8-d09f-463a-a0ec-462107e9d972" />
@@ -189,7 +189,6 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
 ##  Challenges
 
 - **Imbalance:** Tumors occupy **<2% of voxels**; naïve models ignore them.  
-- **3D vs 2.5D:** 3D context improves results but is memory-intensive; we use hybrid 2.5D.  
 - **Annotation noise:** Radiologists vary; post-processing reduces false lesions.  
 - **Two-stage complexity:** Errors from Stage 1 propagate into Stage 2.  
 
