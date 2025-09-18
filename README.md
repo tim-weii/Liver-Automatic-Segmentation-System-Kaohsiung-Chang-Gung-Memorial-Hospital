@@ -25,9 +25,9 @@ Medical image segmentation requires **pixel-level precision**, often detecting *
 Skip connections allow U-Net to combine **low-level spatial details** (edges, textures) with **high-level semantic context**, making it highly effective for biomedical tasks.
 
 <p align="center">
-  <img src="https://ithelp.ithome.com.tw/upload/images/20200920/20001976RwTZHYSSbr.png" width="250" />
-  <img src="https://ithelp.ithome.com.tw/upload/images/20200920/20001976W7GE2cMYsS.png" width="250" />
-  <img src="https://ithelp.ithome.com.tw/upload/images/20200920/20001976oTl8JrUc8N.png" width="250" />
+<img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/e1cfb8c8-0563-4efc-83e0-445afadfacec" />
+<img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/7d3a59ea-d257-4aa6-a352-fb5b725c5e0b" />
+<img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/1e84cb0b-bb32-44df-9827-87fa76283276" />
 </p>
 <p align="center">Fig.2. Example: Original CT slice, ground-truth mask, U-Net segmentation result</p>
 *Source:* [Day 20：使用 U-Net 作影像分割(Image Segmentation)](https://ithelp.ithome.com.tw/articles/10240314)
