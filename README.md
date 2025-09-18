@@ -36,21 +36,45 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
 
 ### 🔹 From U-Net to Multi-level U-Net
 
-While a single U-Net works well for organs, **tumors are small, imbalanced, and hard to detect**.  
-Thus, we design a **Multi-level U-Net**:
+While a single U-Net works reasonably well for **organ-level segmentation**, it struggles when applied directly to **tumors**:
+- Tumors are **small, highly imbalanced**, and often blend with surrounding tissues.  
+- The **liver itself is anatomically divided into multiple lobes/segments**, making boundary delineation even harder.  
+<img width="500" height="282" alt="image" src="https://github.com/user-attachments/assets/c6bb8864-7039-4281-9347-30b1cad3479f" />
+*Source:* [Wikipedia](https://zh.wikipedia.org/zh-tw/%E8%82%9D%E8%87%9F)
 
-1. **Stage 1 (Liver U-Net):** Coarse segmentation of the **entire liver region**.  
-2. **Stage 2 (Tumor U-Net):** Input restricted to **liver ROI** from Stage 1, focusing only on tumors.  
-3. **Post-processing:** 3D connected components, morphological filtering, lesion statistics.  
-
-This two-stage pipeline significantly improves **tumor sensitivity and boundary accuracy** compared to a single U-Net.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/your-custom-multiunet-diagram.png" width="600" />
-</p>
-<p align="center">Fig.3. Multi-level U-Net pipeline: Liver segmentation → Tumor segmentation → Structured report</p>
+- A single-pass U-Net tends to miss fine structures or merge them into larger regions.  
 
 ---
+
+###  My Multi-level U-Net Design
+
+1. **Stage 1 — Liver ROI Extraction**  
+   - A first-pass U-Net isolates the **entire liver region** from CT volumes.  
+   - Provides a coarse mask to crop out irrelevant organs and reduce search space.  
+
+2. **Stage 2 — Multi-level U-Net (Liver Segments + Tumors)**  
+   - Within the extracted liver ROI, a **Multi-level U-Net** performs:  
+     - **Liver segmentation by anatomical segments** (lobes/regions).  
+     - **Simultaneous tumor segmentation** inside each segment.  
+   - This design ensures tumors are detected **in context of their liver region**, improving sensitivity and clinical interpretability.  
+
+3. **Post-processing & Reporting**  
+   - Apply 3D connected components and morphological filtering.  
+   - Extract lesion-level statistics (size, count, segment location).  
+   - Generate a **structured report** (tumor distribution per liver segment).
+---
+
+###  Benefits
+- **Higher tumor sensitivity:** More small lesions detected.  
+- **Better boundary accuracy:** Liver segmentation isolates anatomical regions before tumor detection.  
+- **Clinical alignment:** Outputs structured reports (tumor size, count, lobe/segment location).  
+
+---
+
+<p align="center">
+  <img src="./assets/multi_level_unet.png" width="650" />
+</p>
+<p align="center"><b>Fig.3.</b> Multi-level U-Net pipeline: Liver segmentation → Tumor segmentation → Structured report</p>
 
 ##  Why Multi-level U-Net?
 
