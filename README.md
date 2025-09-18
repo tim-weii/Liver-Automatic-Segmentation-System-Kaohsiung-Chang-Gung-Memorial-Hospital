@@ -71,7 +71,7 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 ---
 
 <p align="center">
-  <img src="./assets/multi_level_unet_demo.png" width="700" />
+<img width="960" height="970" alt="image" src="https://github.com/user-attachments/assets/cece861e-67f6-465f-9160-55197b242695" />
 </p>
 <p align="center"><b>Fig.3.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
 
