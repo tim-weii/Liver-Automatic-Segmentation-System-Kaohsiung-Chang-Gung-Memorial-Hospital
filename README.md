@@ -117,7 +117,7 @@ Without skip connections, small details such as **tumors** would often be lost d
 
 ---
 
-### Why U-Net Works for Medical Imaging
+### Why U-Net Works for Medical Imaging?
 
 Medical image segmentation requires **pixel-level precision**, often to detect **tiny abnormalities** (e.g., tumors).  
 Skip connections allow U-Net to combine **low-level spatial details** (edges, textures) with **high-level semantic context**, making it highly effective for biomedical tasks.
