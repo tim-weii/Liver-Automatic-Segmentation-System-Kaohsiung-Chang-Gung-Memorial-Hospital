@@ -51,7 +51,7 @@ To ensure robust training and handle the challenges of **class imbalance** and *
 - Ensures fair evaluation and prevents overfitting.  
 - Reported metrics (Dice scores, miss rates, efficiency gains) are all based on the **independent test set**.
 
-### 1) Single U-Net (Baseline)
+### 1) Single U-Net
 - ![專題_流程_page-0012](https://github.com/user-attachments/assets/675afab5-ee05-4b42-9220-8afccbead5ad)
 - **Architecture:** One encoder–decoder network trained to segment both liver and tumors simultaneously.
 - **Limitations:**  
