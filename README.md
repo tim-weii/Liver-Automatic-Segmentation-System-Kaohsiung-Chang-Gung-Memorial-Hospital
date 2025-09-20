@@ -15,9 +15,7 @@
 
 ---
 
-## 📖 Understanding U-Net and Multi-level U-Net
-
-### 🔹 What is U-Net?
+### What is U-Net?
 
 U-Net is a **variant of Autoencoder** designed for **image segmentation** tasks.  
 It gets its name from its **U-shaped architecture**, consisting of:
@@ -37,7 +35,7 @@ Without skip connections, small details such as **tumors** would often be lost d
 
 ---
 
-### 🔹 Why U-Net Works for Medical Imaging
+### Why U-Net Works for Medical Imaging
 
 Medical image segmentation requires **pixel-level precision**, often to detect **tiny abnormalities** (e.g., tumors).  
 Skip connections allow U-Net to combine **low-level spatial details** (edges, textures) with **high-level semantic context**, making it highly effective for biomedical tasks.
@@ -60,7 +58,7 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 
 ---
 
-### 🔹 Key Challenges & Motivations
+###  Key Challenges & Motivations
 
 1. **Severe Class Imbalance**  
    - Tumors occupy **<2% of voxels**, while liver/background dominate.  
@@ -118,7 +116,7 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 
 ---
 
-👉 **Summary:**  
+ **Summary:**  
 By constraining the model to liver ROI and combining **multi-task supervision (liver + tumors)**, the Multi-level U-Net not only boosts **accuracy** but also aligns outputs with **clinical workflows**, helping radiologists save time and make safer decisions.
 
 
