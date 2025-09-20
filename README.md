@@ -12,6 +12,9 @@
 **Institution:** Kaohsiung Chang Gung Memorial Hospital (2024/05) — 🥇 *Best Project Award (1st place)*  
 **Team:** 4 persons · **My Contribution:** 50%
 
+This project was developed in collaboration with **Kaohsiung Chang Gung Memorial Hospital** under the research program:  
+*“Integrated Platform for Precision Medicine Strategy and Prognostic Assessment of Hepatocellular Carcinoma (HCC): Construction of Clinical Database, Genomics, Radiomics, and Pathomics Information Network.”*
+*"肝細胞癌精準醫療策略和預後評估整合平台：建構臨床資料庫、基因體學、 影像體學和病理體學資訊網絡"*
 ---
 
 ##  Introduction
