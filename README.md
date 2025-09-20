@@ -6,14 +6,91 @@
 
 <img width="971" height="500" alt="image" src="https://github.com/user-attachments/assets/100b4fc8-d09f-463a-a0ec-462107e9d972" />
 
-<p align="center">Fig.1. This is the system’s visualization interface, showing liver 8-segment and tumor prediction results.</p>
+<p align="center">Fig.1. System visualization interface, showing liver 8-segment and tumor prediction results.</p>
 
 **Institution:** Kaohsiung Chang Gung Memorial Hospital (2024/05) — 🥇 *Best Project Award (1st place)*  
 **Team:** 4 persons · **My Contribution:** 50%
 
-> A **Multi-level U-Net system** that segments liver and tumors from CT scans and generates **structured clinical reports**, reducing radiologists’ workload, shortening diagnosis time, improving accuracy, and accelerating clinical decisions.
+---
+
+##  Introduction
+
+This project develops a **full-stack liver automatic segmentation system** that combines:
+
+- **Deep Learning (Multi-level U-Net):** For liver and tumor segmentation on CT scans.  
+- **Morphological Post-processing:** Connected component analysis, 3D filtering, and noise removal to refine masks.  
+- **Flask-based Frontend:** Interactive visualization interface for radiologists.  
+- **MySQL Database:** Stores segmentation masks, patient metadata, and structured reports.  
+
+The system is designed for **clinical workflow integration**, enabling radiologists to:  
+1. Upload CT scans via the web interface.  
+2. Automatically segment the liver and tumors.  
+3. Generate a **structured clinical report** with tumor count, size, and segment location.  
+4. Review results and validate through an intuitive dashboard.  
 
 ---
+
+##  Model Architecture & Results Overview
+
+Before diving into the basics of U-Net, here is a comparison between a **Single U-Net** and our **Multi-level U-Net** pipeline:
+
+To ensure robust training and handle the challenges of **class imbalance** and **overfitting**, I adopted the following strategies:
+
+- **Loss Weighting**  
+  - Tumor voxels account for <2% of total volume, leading to severe imbalance.  
+  - Applied **class-weighted Dice + Focal Loss**, giving higher penalty to tumor misclassification.  
+  - This weighting scheme preserved **small lesion signals** that would otherwise vanish.
+
+- **Early Stopping**  
+  - Training monitored on the **validation set** (20% of data).  
+  - Stop triggered if no Dice improvement for **20 consecutive epochs**.  
+  - Prevents overfitting and accelerates convergence.
+  
+### Dataset Split
+- **Train / Validation / Test = 70% : 20% : 10%**  
+- Ensures fair evaluation and prevents overfitting.  
+- Reported metrics (Dice scores, miss rates, efficiency gains) are all based on the **independent test set**.
+
+### 1) Single U-Net (Baseline)
+- ![專題_流程_page-0012](https://github.com/user-attachments/assets/675afab5-ee05-4b42-9220-8afccbead5ad)
+- **Architecture:** One encoder–decoder network trained to segment both liver and tumors simultaneously.
+- **Limitations:**  
+  - Tumors occupy <2% of voxels → imbalance causes tumors to vanish.  
+  - Boundaries between liver segments are blurred, making localization difficult.  
+  - Context dilution: model wastes capacity on irrelevant abdominal organs.  
+
+### 2) Multi-level U-Net
+![專題_流程_page-0013](https://github.com/user-attachments/assets/56a2f0e4-b90e-43fa-97a9-7726b0eb8001)
+
+- **Stage 1:** U-Net for liver ROI extraction.  
+- **Stage 2:** U-Net for segment-level liver subdivision **+ tumor segmentation** within the ROI.  
+- **Advantages:**  
+  - Higher sensitivity for small tumors.  
+  - Better boundary accuracy by segment-aware mapping.  
+  - Clinically aligned output (tumor size, count, lobe/segment location).  
+
+
+### Liver
+
+| Fold | Samples | Accuracy   |
+|------|---------|------------|
+| 1    | 398     | 0.8490     |
+| 2    | 427     | 0.8750     |
+| 3    | 402     | 0.8498     |
+| 4    | 478     | 0.9066     |
+| 5    | 459     | 0.9145     |
+
+---
+
+### Segmentation
+
+| Fold | Samples | Accuracy   |
+|------|---------|------------|
+| 1    | 398     | 0.8004     |
+| 2    | 427     | 0.8161     |
+| 3    | 402     | 0.8530     |
+| 4    | 478     | 0.7876     |
+| 5    | 459     | 0.8086     |
 
 ### What is U-Net?
 
@@ -45,7 +122,10 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/7d3a59ea-d257-4aa6-a352-fb5b725c5e0b" />
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/1e84cb0b-bb32-44df-9827-87fa76283276" />
 </p>
-<p align="center">Fig.3. Example: Original CT slice, ground-truth mask, U-Net segmentation result</p>  
+<p align="center">Fig.3. Example with **dog images**: original input, ground-truth mask, and U-Net segmentation result.</p>  
+
+> ⚠️ *Note:* This figure uses **dog images** from a public tutorial to illustrate the **general U-Net mechanism**.  
+> In our actual project, the same principles are applied to **CT scans for liver and tumor segmentation**.
 
 *Source:* [Day 20：使用 U-Net 作影像分割](https://ithelp.ithome.com.tw/articles/10240314)
 
@@ -150,29 +230,6 @@ By constraining the model to liver ROI and combining **multi-task supervision (l
    - **Web UI (ReactJS)** supports browsing, editing, export.  
 
 ---
-
-### Liver
-
-| Fold | Samples | Accuracy   |
-|------|---------|------------|
-| 1    | 398     | 0.8490     |
-| 2    | 427     | 0.8750     |
-| 3    | 402     | 0.8498     |
-| 4    | 478     | 0.9066     |
-| 5    | 459     | 0.9145     |
-
----
-
-### Segmentation
-
-| Fold | Samples | Accuracy   |
-|------|---------|------------|
-| 1    | 398     | 0.8004     |
-| 2    | 427     | 0.8161     |
-| 3    | 402     | 0.8530     |
-| 4    | 478     | 0.7876     |
-| 5    | 459     | 0.8086     |
-
 
 ##  Dataset & Metrics
 
