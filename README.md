@@ -22,7 +22,7 @@
 
 Develops a **full-stack liver automatic segmentation system** that combines:
 
-- **Deep Learning (Multi-level U-Net):** For liver and tumor segmentation on CT scans.  
+- **Deep Learning (Multi-class U-Net):** For liver and tumor segmentation on CT scans.  
 - **Morphological Post-processing:** Connected component analysis, 3D filtering, and noise removal to refine masks.  
 - **Flask-based Frontend:** Interactive visualization interface for radiologists.  
 - **MySQL Database:** Stores segmentation masks, patient metadata, and structured reports.  
@@ -37,7 +37,7 @@ The system is designed for **clinical workflow integration**, enabling radiologi
 
 ##  Model Architecture & Results Overview
 
-Before diving into the basics of U-Net, here is a comparison between a **Single U-Net** and our **Multi-level U-Net** pipeline:
+Before diving into the basics of U-Net, here is a comparison between a **Single U-Net** and our **Multi-class U-Net** pipeline:
 
 To ensure robust training and handle the challenges of **class imbalance** and **overfitting**, I adopted the following strategies:
 
@@ -64,11 +64,11 @@ To ensure robust training and handle the challenges of **class imbalance** and *
   - Boundaries between liver segments are blurred, making localization difficult.  
   - Context dilution: model wastes capacity on irrelevant abdominal organs.  
 
-### 2) Multi-level U-Net
+### 2) Multi-class U-Net
 ![專題_流程_page-0013](https://github.com/user-attachments/assets/56a2f0e4-b90e-43fa-97a9-7726b0eb8001)
 
 - **Stage 1:** U-Net for liver ROI extraction.  
-- **Stage 2:** U-Net for segment-level liver subdivision **+ tumor segmentation** within the ROI.  
+- **Stage 2:** U-Net for segment-class liver subdivision **+ tumor segmentation** within the ROI.  
 - **Advantages:**  
   - Higher sensitivity for small tumors.  
   - Better boundary accuracy by segment-aware mapping.  
