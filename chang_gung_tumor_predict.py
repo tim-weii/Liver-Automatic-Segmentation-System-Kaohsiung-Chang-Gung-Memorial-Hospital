@@ -5,10 +5,8 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-# 正則表達式套件
 import re
 import os
-# 導入需要的程式庫
 import tensorflow.keras as keras
 import tensorflow as tf
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -310,4 +308,5 @@ for fold in range(1):
         ax3.grid(False)
         # plt.savefig(f'H:/TOPIC/Unet_liver_segmentation/fold/segmentation_photo/fold{fold+1}/img_{fold}_seg_{j}.png')
         plt.show()
+
         plt.close()
