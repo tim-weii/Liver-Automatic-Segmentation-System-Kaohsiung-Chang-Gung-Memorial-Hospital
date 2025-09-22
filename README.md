@@ -124,6 +124,32 @@ To ensure robust training and handle the challenges of **class imbalance** and *
 | 4    | 478     | 0.7876     |
 | 5    | 459     | 0.8086     |
 
+
+# Structured Report
+
+## Format Overview
+Structured data in this report is organized into **columns (fields)**, each representing a specific clinical feature.  
+- **id** → Patient identifier  
+- **number / location / size** → Tumor count, location, and size  
+- **Columns 5–8** → Tumor characteristics (0 = absent, 1 = present)  
+- **Columns 9–15** → Associated liver features (0 = absent, 1 = present)  
+- **Column 16** → Portal vein thrombosis (0 = absent, 1–4 = Grade I–VI)  
+- **Column 17** → Pathology (Primary tumor stage, 0–7 = Tx–T4)  
+
+---
+
+## Example (Partial)
+| id  | number | location |
+|-----|--------|----------|
+| 2   | 1      | S4-8     |
+| 4   | 1      | S5-6     |
+| 5   | 1      | S7-8     |
+| 7   | 1      | S5-6     |
+| 8   | 1      | S3       |
+| 9   | 1      | S8       |
+| 10  | 1      | S5       |
+...
+
 ### What is U-Net?
 
 U-Net is a **variant of Autoencoder** designed for **image segmentation** tasks.  
