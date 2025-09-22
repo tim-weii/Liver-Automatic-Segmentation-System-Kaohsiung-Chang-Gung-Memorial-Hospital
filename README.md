@@ -1,4 +1,4 @@
-<img width="430" height="418" alt="image" src="https://github.com/user-attachments/assets/4d75c51d-8723-4ac5-a963-e694ed67e372" />#  Liver Automatic Segmentation System
+#  Liver Automatic Segmentation System
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://www.python.org/) 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.12-orange?logo=tensorflow)](https://www.tensorflow.org/) 
