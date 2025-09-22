@@ -165,32 +165,11 @@ Traditional U-Net has shown strong performance in medical image segmentation,
 but when applied directly to **liver CT scans with tumors**, it encounters several fundamental challenges.  
 To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolates the liver region and **Stage 2** performs **segment-level + tumor segmentation** inside that ROI.  
 
----
-
-###  Key Challenges & Motivations
-
-1. **Severe Class Imbalance**  
-   - Tumors occupy **<2% of voxels**, while liver/background dominate.  
-   - Single U-Net optimizes for global Dice → small tumors vanish during downsampling.  
-   - Solution: ROI cropping + Focal/Dice Loss to amplify tumor signal.  
-
-2. **Anatomical Complexity**  
-   - The liver is divided into **8 Couinaud segments**, each clinically meaningful.  
-   - Single U-Net blurs boundaries → poor tumor localization.  
-   - Solution: Multi-level U-Net outputs **segment-aware tumor mapping**, enabling structured reporting.  
-
-3. **Context Dilution & Efficiency**  
-   - Entire abdomen input wastes capacity on irrelevant organs (kidneys, stomach, vessels).  
-   - Leads to false positives + slower convergence.  
-   - Solution: Stage 1 liver ROI → Stage 2 fine segmentation on liver only.  
-
----
-
 <p align="center">
   <img width="430" height="418" alt="image" src="https://github.com/user-attachments/assets/c8dbc222-ca81-463b-a030-881ccf5e31a4"/>
 </p>
 <p align="center"><b>Fig.7.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
-*Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class)
+
 ---
 
 ##  Our System Design
@@ -209,26 +188,27 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 3. **Post-processing & Reporting**  
    - Apply 3D connected components, morphological filtering.  
    - Extract **lesion statistics** (size, count, location).  
-   - Generate a **structured report** (tumor distribution by liver segment).  
+   - Generate a **structured report** (tumor distribution by liver segment).
+  
+   
+###  Key Challenges & Motivations
+
+1. **Severe Class Imbalance**  
+   - Tumors occupy **<2% of voxels**, while liver/background dominate.  
+   - Single U-Net optimizes for global Dice → small tumors vanish during downsampling.  
+   - Solution: ROI cropping + Focal/Dice Loss to amplify tumor signal.  
+
+2. **Anatomical Complexity**  
+   - The liver is divided into **8 Couinaud segments**, each clinically meaningful.  
+   - Single U-Net blurs boundaries → poor tumor localization.  
+   - Solution: Multi-level U-Net outputs **segment-aware tumor mapping**, enabling structured reporting.  
+
+3. **Context Dilution & Efficiency**  
+   - Entire abdomen input wastes capacity on irrelevant organs (kidneys, stomach, vessels).  
+   - Leads to false positives + slower convergence.  
+   - Solution: Stage 1 liver ROI → Stage 2 fine segmentation on liver only.  
+
 ---
-
-##  Benefits of Multi-level U-Net (vs Single U-Net)
-
-| Aspect | Single U-Net (Baseline) | Multi-level U-Net (Our Design) | Benefit |
-|--------|--------------------------|--------------------------------|---------|
-| **Small Tumors** | Vanish due to class imbalance (<2% voxels) | ROI cropping + focal loss enhance tumor-to-background ratio | Better small tumor detection |
-| **Boundary Accuracy** | Blurs across liver lobes, hard to localize | Segments **by anatomical regions**, preserving fine boundaries | More precise tumor boundaries |
-| **Clinical Interpretability** | Only says “tumor present” | Reports **tumor size + segment location (e.g., IVa, 2.3 cm)** | Directly usable in diagnosis |
-| **False Positives** | Wasted capacity on irrelevant organs → more FP | Ignores kidneys/stomach/etc., focuses on **liver-only ROI** | Fewer false positives |
-| **Supervision Signal** | Binary tumor mask only | Multi-task: **segments + tumors** → richer gradients | Stronger learning signal |
-| **Efficiency & Workflow** | Radiologists must manually verify every CT slice | Structured reports summarize count, size, region → quick review | Saves time, reduces fatigue/misdiagnosis |
-
----
-
- **Summary:**  
-By constraining the model to liver ROI and combining **multi-task supervision (liver + tumors)**, the Multi-level U-Net not only boosts **accuracy** but also aligns outputs with **clinical workflows**, helping radiologists save time and make safer decisions.
-
-
 
 ##  Workflow (Step-by-Step)
 
