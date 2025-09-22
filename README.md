@@ -16,6 +16,9 @@
 > *“Integrated Platform for Precision Medicine Strategy and Prognostic Assessment of Hepatocellular Carcinoma (HCC): Construction of Clinical Database, Genomics, Radiomics, and Pathomics Information Network.”*  
 > *「肝細胞癌精準醫療策略和預後評估整合平台：建構臨床資料庫、基因體學、影像體學和病理體學資訊網絡」*
 
+> ***The code in this repository is a **demonstration version** of my work.***
+> ***Due to collaboration and intellectual property agreements, the **complete implementation** cannot be made public.***
+> ***The provided code is a **simplified version for illustration purposes**, showing the core ideas and methodology without exposing proprietary details.***
 ---
 
 ##  Liver Anatomy Overview  
@@ -24,7 +27,7 @@ The liver is divided into **8 functional segments** (Couinaud’s classification
 which are important for **surgical planning and tumor localization**.  
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Liver_Segments.png/512px-Liver_Segments.png" alt="Liver segments" width="500"/>
+<img width="500" height="282" alt="image" src="https://github.com/user-attachments/assets/02461045-8ddf-4971-b157-5ccb828f744e" />
 </p>  
 
 <p align="center">Fig.2. Liver segmentation according to Couinaud’s classification.</p>
