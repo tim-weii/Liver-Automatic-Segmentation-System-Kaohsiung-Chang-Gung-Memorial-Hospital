@@ -1,4 +1,4 @@
-#  Liver Automatic Segmentation System
+<img width="430" height="418" alt="image" src="https://github.com/user-attachments/assets/4d75c51d-8723-4ac5-a963-e694ed67e372" />#  Liver Automatic Segmentation System
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://www.python.org/) 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.12-orange?logo=tensorflow)](https://www.tensorflow.org/) 
@@ -17,6 +17,30 @@
 > *「肝細胞癌精準醫療策略和預後評估整合平台：建構臨床資料庫、基因體學、影像體學和病理體學資訊網絡」*
 
 ---
+
+##  Liver Anatomy Overview  
+
+The liver is divided into **8 functional segments** (Couinaud’s classification),  
+which are important for **surgical planning and tumor localization**.  
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Liver_Segments.png/512px-Liver_Segments.png" alt="Liver segments" width="500"/>
+</p>  
+
+<p align="center">Fig.2. Liver segmentation according to Couinaud’s classification.</p>
+
+Source: [Wikipedia – Liver segments](https://en.wikipedia.org/wiki/Liver_segmentation) (CC BY-SA 3.0).*  
+
+
+- **Right lobe:** Segments 5–8  
+- **Left lobe:** Segments 2–4  
+- **Caudate lobe:** Segment 1  
+
+In clinical practice, radiologists report **tumor size, number, and location** based on these segments.  
+This provides critical information for **diagnosis, treatment planning, and surgical decisions**.  
+
+---
+
 
 ##  Introduction
 
@@ -111,7 +135,7 @@ Without skip connections, small details such as **tumors** would often be lost d
 <p align="center">
   <img src="https://ithelp.ithome.com.tw/upload/images/20200919/20001976muQqJZ6VAC.png" width="600"/>
 </p>
-<p align="center">Fig.2. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
+<p align="center">Fig.5. U-Net architecture (source: Deep Learning for Image Segmentation)</p>
 
 
 
@@ -127,7 +151,7 @@ Skip connections allow U-Net to combine **low-level spatial details** (edges, te
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/7d3a59ea-d257-4aa6-a352-fb5b725c5e0b" />
 <img width="279" height="300" alt="image" src="https://github.com/user-attachments/assets/1e84cb0b-bb32-44df-9827-87fa76283276" />
 </p>
-<p align="center">Fig.3. Example with **dog images**: original input, ground-truth mask, and U-Net segmentation result.</p>  
+<p align="center">Fig.6. Example with **dog images**: original input, ground-truth mask, and U-Net segmentation result.</p>  
 
 > ⚠️ *Note:* This figure uses **dog images** from a public tutorial to illustrate the **general U-Net mechanism**.  
 > In our actual project, the same principles are applied to **CT scans for liver and tumor segmentation**.
@@ -163,9 +187,9 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 ---
 
 <p align="center">
-<img width="400" height="450" alt="image" src="https://github.com/user-attachments/assets/cece861e-67f6-465f-9160-55197b242695" />
+<Figure size 640x480 with 1 Axes><img width="430" height="418" alt="image" src="https://github.com/user-attachments/assets/c8dbc222-ca81-463b-a030-881ccf5e31a4" />
 </p>
-<p align="center"><b>Fig.3.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
+<p align="center"><b>Fig.7.</b> Multi-level U-Net segmentation: liver ROI → segment-level labels → tumor extraction</p>
 *Source:* [A two-stage 3D Unet framework for multi-class segmentation on full resolution image](https://www.catalyzex.com/paper/a-two-stage-3d-unet-framework-for-multi-class)
 ---
 
