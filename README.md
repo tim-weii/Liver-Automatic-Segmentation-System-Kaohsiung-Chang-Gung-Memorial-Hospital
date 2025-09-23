@@ -298,12 +298,3 @@ To overcome these, we designed a **Multi-level U-Net**, where **Stage 1** isolat
 - Improves consistency, reduces fatigue-related misdiagnosis risk.  
 
 ---
-
-##  Future Work
-
-- **Advanced models:** Attention U-Net, TransUNet, Swin-UNet.  
-- **Semi-supervised learning:** leverage unlabeled CTs.  
-- **Multi-modal fusion:** integrate MRI + CT.  
-- **Deployment:** export structured results as **DICOM-SR** for direct PACS integration.  
-
----
