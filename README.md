@@ -1,4 +1,4 @@
-#  Liver Automatic Segmentation System
+#  Liver Automatic Segmentation System Kaohsiung Chang Gung Memorial Hospital
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://www.python.org/) 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.12-orange?logo=tensorflow)](https://www.tensorflow.org/) 
