@@ -8,7 +8,6 @@
 <p align="center">Fig.1. System visualization interface, showing liver 8-segment and tumor prediction results.</p>
 
 **Institution:** Kaohsiung Chang Gung Memorial Hospital (2024/05) — 🥇 *Best Project Award (1st place)*  
-**Team:** 4 persons · **My Contribution:** 50%
 
 > **Research Collaboration:**  
 > *“Integrated Platform for Precision Medicine Strategy and Prognostic Assessment of Hepatocellular Carcinoma (HCC): Construction of Clinical Database, Genomics, Radiomics, and Pathomics Information Network.”*  
